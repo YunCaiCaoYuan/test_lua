@@ -1,4 +1,5 @@
 local cjson = require "cjson"
+local util = require "cjson.util"
 
 -- 创建实例
 local cjson2 = cjson.new()
@@ -27,4 +28,9 @@ local lua_object = {
     ["email"] = "1569989xxxx@126.com",
     ["tel"] = "1569989xxxx"
 }
-print(cjson2.encode(lua_object))
+print(util.serialise_value(lua_object))
+local en_lua_object = cjson2.encode(lua_object)
+print(en_lua_object)
+local de_lua_object = cjson2.decode(en_lua_object)
+print("de_lua_object=", de_lua_object)
+print(util.serialise_value(de_lua_object))
